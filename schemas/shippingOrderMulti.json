@@ -1,13 +1,18 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema#",
     "$id": "http://our.company.com/order.schema.json",
-    "title": "Shipping Order",
-    "description": "Shipping request",
+    "title": "Shipping Order Multi",
+    "description": "Shipping multiple orders",
     "type": "object",
     "properties": {
-        "productId": {
-            "type": "integer",
-            "minimum": 1000
+        "productIds": {
+            "type": "array",
+            "items": [
+                {
+                    "type": "integer",
+                    "minimum": 1000
+                }
+            ]
         },
         "name": {
             "type": "string"
@@ -16,12 +21,13 @@
             "type": "string"
         },
         "zip": {
-            "type": "string"
+            "type": "string",
+            "pattern": "[0-9]{5}-[0-9]{4}"
         }
     },
     "additionalProperties": false,
     "required": [
-        "productId",
+        "productIds",
         "name",
         "addr",
         "zip"
