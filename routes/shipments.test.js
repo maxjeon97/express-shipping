@@ -69,6 +69,7 @@ describe("POST /shipments/multi", function () {
     const resp = await request(app)
       .post("/shipments/multi")
       .send();
+
     expect(resp.statusCode).toEqual(400);
   });
 
